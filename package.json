@@ -1,0 +1,21 @@
+{
+  "name": "playwright-practices",
+  "version": "1.0.0",
+  "description": "Repository for Playwright practices and improve automation testing abilities.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mojicator/playwright-practices.git"
+  },
+  "author": "Oscar Hernandez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mojicator/playwright-practices/issues"
+  },
+  "homepage": "https://github.com/Mojicator/playwright-practices#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@types/node": "^24.7.0"
+  }
+}
