@@ -1,0 +1,14 @@
+{
+  "userValid": {
+    "firstName": "Maria",
+    "lastName": "Suarez",
+    "email": "",
+    "password": "test123"
+  },
+  "userInvalid": {
+    "firstName": "Oscar",
+    "lastName": "Hernandez",
+    "email": "oscar2mojica@gmail.com",
+    "password": "test123"
+  }
+}

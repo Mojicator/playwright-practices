@@ -1,12 +1,18 @@
 import { test, expect } from "@playwright/test";
 import { SignupPage } from "../pages/signupPage";
+import { User } from "../models/user";
+import TestData from "../data/testData.json";
 
 let signupPage: SignupPage;
+let userValid: User;
+let userInvalid: User;
 
 test.describe("Sign up page", () => {
   test.beforeEach(async ({ page }) => {
     signupPage = new SignupPage(page);
     await signupPage.isVisited();
+    userValid = new User(TestData.userValid);
+    userInvalid = new User(TestData.userInvalid);
   });
 
   test("TC01 Verify all visual elements exist", async () => {
@@ -22,12 +28,7 @@ test.describe("Sign up page", () => {
   });
 
   test("TC03 Verify Sign up button is enabled when form is filled in", async () => {
-    await signupPage.fillInForm(
-      "Maria",
-      "Suarez",
-      "masuarez@email.com",
-      "test123"
-    );
+    await signupPage.fillInForm(userValid);
     await expect(signupPage.signupButton).toBeEnabled();
   });
 
@@ -37,23 +38,13 @@ test.describe("Sign up page", () => {
   });
 
   test("TC05 Sign up an user successfully", async ({ page }) => {
-    await signupPage.fillInForm(
-      "Maria",
-      "Suarez",
-      `masuares${Date.now()}@test.com`,
-      "test123"
-    );
+    await signupPage.fillInForm(userValid);
     await signupPage.signupButton.click();
     await expect(page.getByRole("alert")).toContainText("Registro exitoso!");
   });
 
   test("TC06 Sign up an user that already exist", async ({ page }) => {
-    await signupPage.fillInForm(
-      "Oscar",
-      "Hernandez",
-      "oscar2mojica@gmail.com",
-      "test123"
-    );
+    await signupPage.fillInForm(userInvalid);
     await signupPage.signupButton.click();
     await expect(page.getByRole("alert")).toContainText("Email already in use");
   });

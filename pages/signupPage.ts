@@ -1,4 +1,5 @@
 import { Page, Locator } from "@playwright/test";
+import { User } from "../models/user";
 
 export class SignupPage {
   readonly page: Page;
@@ -22,15 +23,10 @@ export class SignupPage {
     await this.page.waitForLoadState();
   }
 
-  async fillInForm(
-    firstName: string,
-    lastName: string,
-    email: string,
-    password: string
-  ) {
-    await this.firstNameInput.fill(firstName);
-    await this.lastNameInput.fill(lastName);
-    await this.emailInput.fill(email);
-    await this.passwordInput.fill(password);
+  async fillInForm(user: User) {
+    await this.firstNameInput.fill(user.firstName);
+    await this.lastNameInput.fill(user.lastName);
+    await this.emailInput.fill(user.email);
+    await this.passwordInput.fill(user.password);
   }
 }
