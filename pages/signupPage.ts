@@ -8,6 +8,7 @@ export class SignupPage {
   readonly emailInput: Locator;
   readonly passwordInput: Locator;
   readonly signupButton: Locator;
+  readonly goToLoginPageButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -16,6 +17,7 @@ export class SignupPage {
     this.emailInput = page.locator('input[name="email"]');
     this.passwordInput = page.locator('input[name="password"]');
     this.signupButton = page.getByTestId("boton-registrarse");
+    this.goToLoginPageButton = page.getByTestId("boton-login-header-signup");
   }
 
   async isVisited() {

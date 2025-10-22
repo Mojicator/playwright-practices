@@ -33,7 +33,7 @@ test.describe("Sign up page", () => {
   });
 
   test("TC04 Navigate to Login page", async ({ page }) => {
-    await page.getByTestId("boton-login-header-signup").click();
+    await signupPage.goToLoginPageButton.click();
     await expect(page).toHaveURL("http://localhost:3000/login");
   });
 
